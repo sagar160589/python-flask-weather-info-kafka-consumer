@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<!--
+	Story by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Weather Data</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta http-equiv="refresh" content="10">
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="{{url_for('static', filename='assets/css/noscript.css')}}" /></noscript>
+	</head>
+	<body class="is-preload" style="background-color: orange;">
+
+		<!-- Wrapper -->
+			<div id="wrapper" class="divided">
+					<section class="banner style1 orient-left content-align-left image-position-right fullscreen onload-image-fade-in onload-content-fade-right">
+						<div class="content">
+							{% if not error %}
+							<h1>Weather in {{weather.request.query}} at Local Time: {{weather.location.localtime}}</h1>
+							<h2><img style="vertical-align:middle" src="{{url_for('static', filename='images/lat.jpg')}}" alt="" width="20%"/> Latitude: {{weather.location.lat}} Longitude: {{weather.location.lon}}</h2>
+							<h2><img style="vertical-align:middle" src="{{url_for('static', filename='images/temp.jpg')}}" alt="" width="20%"/>  Temperature: {{weather.current.temperature}}°C</h2>
+							<h2><img style="vertical-align:middle" src="{{url_for('static', filename='images/weather.jpg')}}" alt="" width="20%"/> is {{weather.current.weather_descriptions[0]}}</h2>
+							<h2><img style="vertical-align:middle" src="{{url_for('static', filename='images/wind.jpg')}}" alt="" width="20%" />  Wind is flowing at {{weather.current.wind_speed}} km/h at {{weather.current.wind_degree}} degree
+							    in {{weather.current.wind_dir}} direction and at {{weather.current.pressure}} pressure</h2>
+							<h2><img style="vertical-align:middle" src="{{url_for('static', filename='images/humidity.jpg')}}" alt="" width="20%" /> Humidity is {{weather.current.humidity}} % with a cloud cover of {{weather.current.cloudcover}} % and visibility of {{weather.current.visibility}}</h2>
+							{% else %}
+							<h1>No weather information to display as of now</h1>
+							{% endif %}
+						<div>
+            </div>
+						</div>
+						<div class="image">
+
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="{{url_for('static', filename='assets/js/jquery.min.js')}}"></script>
+			<script src="{{url_for('static', filename='assets/js/jquery.scrollex.min.js')}}"></script>
+			<script src="{{url_for('static', filename='assets/js/jquery.scrolly.min.js')}}"></script>
+			<script src="{{url_for('static', filename='assets/js/browser.min.js')}}"></script>
+			<script src="{{url_for('static', filename='assets/js/breakpoints.min.js')}}"></script>
+			<script src="{{url_for('static', filename='assets/js/util.js')}}"></script>
+			<script src="{{url_for('static', filename='assets/js/main.js')}}"></script>
+
+	</body>
+</html>
